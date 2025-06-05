@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Deploy via FTP') {
             steps {
-                sh """
+                sh '''
                     lftp -d -u alex1,${password} ftp-alex1.alwaysdata.net -e "
                         mirror -R /home/jenkins/workspace/alex-tp-frontend/ www/;
                         bye
                     "
-                """
+                '''
             }
         }
         stage('Install Node') {
