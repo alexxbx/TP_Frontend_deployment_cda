@@ -9,10 +9,11 @@ pipeline {
         stage('Deploy via FTP') {
             steps {
                 sh '''
-                    lftp -d -u alex1,${password} ftp-alex1.alwaysdata.net -e "
-                        mirror -R /home/jenkins/workspace/alex-tp-frontend/ www/;
+                    lftp -d -u alex1,Jpbond92500+ ftp-alex1.alwaysdata.net -e "
+                        mirror -R -X node_modules/ -X .git/ /home/jenkins/workspace/alex-tp-frontend/ www/;
                         bye
                     "
+
                 '''
             }
         }
